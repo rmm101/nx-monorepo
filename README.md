@@ -29,7 +29,7 @@ This monorepo is structured as follows:
 
 ## List of targets
 
-- Start the projects
+- Start the projects individually
 
 `nx serve react-store`
 
@@ -91,7 +91,7 @@ Open your browser and navigate to http://localhost:4200/.
 
 - Run specific projects and multiple targets at the same time
 
-`nx nx run-many -p next-inventory next-payments --targets=lint,test`
+`nx run-many -p next-inventory next-payments --targets=lint,test`
 
 ## Generate new elements to the project
 
