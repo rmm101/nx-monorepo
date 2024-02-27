@@ -1,0 +1,27 @@
+{
+  "projectType": "application",
+  "name": "next-inventory-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/next-inventory-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/next-inventory-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "next-inventory:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "next-inventory:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["next-inventory"]
+}
