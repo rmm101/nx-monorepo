@@ -200,10 +200,13 @@ The access token is typically set in the `nx.json` file in your project. You can
 
 ```
 "nxCloud": {
-  "accessToken": "<access-token>"
+  "nxCloudAccessToken": "<access-token>"
 }
 ```
-
+When setting up nx cloud for the first time, after linking your nx cloud account to your github repo the following command will automatically set `nxCloudAccessToken` for you. 
+```
+npx nx connect-to-nx-cloud
+```
 ### Why Nx Cloud?
 
 Nx Cloud, specifically designed for monorepos built with Nx, offers several advantages over other CI (Continuous Integration) solutions when working with Nx-based monorepos. Here are some key benefits:
