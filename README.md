@@ -302,6 +302,9 @@ This monorepo contains three applications, so create three separate projects in 
 
 <img width="1005" alt="Screenshot 2024-01-05 at 17 08 33" src="https://github.com/101-Ways/nx-monorepo/assets/147872465/a3b6e47c-6c60-48e7-b93d-b68d3c551c16">
 
+To be able to use test this project locally or deploy to production, you will need to set up a Contentful account, the associated environment variables.
+More details on this can be found in the Contentful section below.
+
 #### next-payments (Next.js project)
 
 <img width="959" alt="Screenshot 2024-01-09 at 14 01 32" src="https://github.com/101-Ways/nx-monorepo/assets/147872465/f01fcf59-bef6-4fc2-83c2-f2b6759b9a70">
@@ -380,9 +383,31 @@ The initial step involves creating a file named `apollo-client.ts` at the root o
   });
 ```
 
-To establish the connection and pull data, both the space identifier and the access token are required. These can be obtained from your personal [Contentful](https://www.contentful.com/) account.
+To establish the connection and pull data, both the `Space ID` = `CONTENTFUL_SPACE_ID` and the `Content Delivery API - access token` = `CONTENTFUL_ACCESS_TOKEN` are required to either be set in the `.env` file or set in environment variables section of `Vercel`, when being tested locally, or deployed to `Vercel` respectively.
+
+These can be obtained from your personal [Contentful](https://www.contentful.com/) account.
+
+Once logged in, go to `Settings` -> `API Keys`.
+
+Select `Marketplace Apps Key`.
+![](/Users/reecemiller-mcpherson/Desktop/Screenshot 2024-02-28 at 14.23.58.png)
 
 In Contentful, you can create a project, referred to as a 'space,' where you manage your content. Within each space, it's possible to set up different environments. Each of these environments can have its own unique access token. Alternatively, you can use a single access token and configure it to have permissions across multiple environments.
+
+By default, you will have a master environment.
+
+To create a new environment select `Settings` -> `Environment`. Then select the `Add environment` button and enter the name of the enviroments you want.
+In order to get the project `next-inventory` mentioned earlier to deploy successfully on `Vercel`, you will need to create an environment named `production` and create the following models under that environment.
+
+Under the `production` environment, create content model called `Product` and enter the fields in the image below with associated field types.
+
+![](/Users/reecemiller-mcpherson/Desktop/Screenshot 2024-02-28 at 14.42.35.png)
+
+Under the `Content` tab create a new entry for the `Product` content model populating the fields with any values and then publish.
+
+![](/Users/reecemiller-mcpherson/Desktop/Screenshot 2024-02-28 at 14.47.22.png)
+
+With this set up, you will be able to deploy next-inventory successfully on `Vercel`.
 
 One of the many advantages of having distinct environments within the same space is the ability to systematically and controlledly merge changes from development to production. This approach ensures a smoother transition of updates and minimizes disruptions to the live environment.
 
